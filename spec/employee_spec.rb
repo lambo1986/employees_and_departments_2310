@@ -29,7 +29,7 @@ RSpec.describe do
     bobbi = Employee.new({name: "Bobbi Jaeger", age: "30", salary: "$100000"})
 
     bobbi.give_raise(5000)
-    require 'pry'; binding.pry
+    
     expect(bobbi.salary).to eq(105000)
   end
 end

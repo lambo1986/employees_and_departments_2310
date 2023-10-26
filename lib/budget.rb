@@ -1,8 +1,7 @@
-require './lib/department'
-require './lib/employee'
+
 
 class Budget
-  attr_reader :departments
+  attr_reader :departments, :year
   def initialize(year)
     @year = year
     @departments = []
@@ -19,14 +18,24 @@ class Budget
         low_expense_offices << department
       end
     end
-    return low_expense_offices
+    low_expense_offices
   end
 
   def employee_salaries
-    salaries = []
+    salaries = []     # derived from: budget.departments[0].employees[0].salary
     @departments.each do |department|
-      salaries << department.employees.data[:salary]
+      department.employees.each do |employee|
+        salaries << employee.salary
+      end
     end
-    return salaries
+    salaries
+  end
+
+  def current_expenses_by_department
+    dept_expense = {}
+    @departments.each do |department|
+      dept_expense[department.name] = department.expenses
+    end
+    dept_expense
   end
 end

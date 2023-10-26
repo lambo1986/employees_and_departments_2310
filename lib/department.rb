@@ -1,5 +1,4 @@
-require './lib/department'
-require './lib/employee'
+
 
 class Department
   attr_reader :name, :employees
